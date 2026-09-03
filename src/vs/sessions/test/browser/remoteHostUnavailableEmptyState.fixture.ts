@@ -5,6 +5,7 @@
 
 import { ComponentFixtureContext, defineComponentFixture, defineThemedFixtureGroup } from '../../../workbench/test/browser/componentFixtures/fixtureUtils.js';
 import { type IRemoteHostUnavailableEmptyStateContent, RemoteHostUnavailableEmptyState } from '../../browser/parts/remoteHostUnavailableEmptyState.js';
+import { AGENTS_CENTERED_CONTENT_MAX_WIDTH } from '../../common/layoutConstants.js';
 
 export default defineThemedFixtureGroup({ path: 'sessions/remoteHostUnavailable/' }, {
 	HostNotRunning: defineComponentFixture({
@@ -47,8 +48,9 @@ export default defineThemedFixtureGroup({ path: 'sessions/remoteHostUnavailable/
 
 function renderUnavailableState({ container, disposableStore }: ComponentFixtureContext, content: IRemoteHostUnavailableEmptyStateContent): void {
 	container.style.position = 'relative';
-	container.style.width = '480px';
-	container.style.height = '280px';
+	container.style.width = `${AGENTS_CENTERED_CONTENT_MAX_WIDTH}px`;
+	container.style.setProperty('--session-view-centered-content-max-width', container.style.width);
+	container.style.height = 'calc(var(--vscode-spacing-size400) * 6)';
 	container.style.backgroundColor = 'var(--vscode-editorWidget-background)';
 
 	const state = disposableStore.add(new RemoteHostUnavailableEmptyState());
