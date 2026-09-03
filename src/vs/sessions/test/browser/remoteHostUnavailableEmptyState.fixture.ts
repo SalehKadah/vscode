@@ -47,8 +47,8 @@ export default defineThemedFixtureGroup({ path: 'sessions/remoteHostUnavailable/
 
 function renderUnavailableState({ container, disposableStore }: ComponentFixtureContext, content: IRemoteHostUnavailableEmptyStateContent): void {
 	container.style.position = 'relative';
-	container.style.width = 'var(--session-view-centered-content-max-width)';
-	container.style.height = 'calc(var(--vscode-spacing-size400) * 6)';
+	container.style.width = '480px';
+	container.style.height = '280px';
 	container.style.backgroundColor = 'var(--vscode-editorWidget-background)';
 
 	const state = disposableStore.add(new RemoteHostUnavailableEmptyState());
